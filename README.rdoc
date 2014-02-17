@@ -2,33 +2,54 @@
 
 http://shrouded-mesa-2384.herokuapp.com/
 
+== Schema
+
+Reviewers
+	name (string)
+	location (string)
+
+Jobs
+	company (string)
+	role (string)
+	startyear (integer)
+	endyear (integer)
+	reviewer (Belongs_to)
+
 == What I Did and Issues I Had
 
-* Setup Ruby, Rails, Git, and Heroku
+* Create Controller and Model for Reviewers/Reviewer and Jobs/Job
 
-I already had Homebrew/Git installed on my computer (MAC OSX 10.9 Mavericks) and had some trouble figuring out what exactly was installed.  After fumbling around I ended up with the following programs installed with version number in brackets: Ruby (2.1.0), Gem (2.2.1), Git (1.8.5.2), Rails (4.0.2).  I'm hoping these are all compatible with the syntax we'll be using in this course.
+Generated Reviewers and Jobs tables through rails generate function in the terminal.  This created the files that I needed to store information into my database, edit them, and display them.
 
-* Updated Gemfile to run SQLite3 locally and postgreSQL on Heroku
+* Write Key Table Manipulation Functions in Controller
 
-I had some trouble with this initially because all I did was add the "group: development" and "group: production" code at the bottom of the file.  Heroku did not like that when it was compiling because there were multiple references to "sqlite3".  After looking at your code I was able to adjust it so that it worked
+Wrote key functions for both Reviewers/Jobs controller such as new, create, edit, destroy, update, index, and show.
 
-* Created a homepage by generating a home controller with an index method and view
+* Wrote Html/Ruby Code for Views Related to Each Table
 
-Was accomplished by doing "rails generate controller home index" and updating the config/routes.rb to include "root 'home#index'".  This was relatively straightforward and I did not encounter any issues.
+Wrote HTML/Ruby so that the views properly displayed table output and could handle new input, editing, and deleting
+
+* Edited Routes
+
+Ensured that the routes between views was logical
+
+* Cleaned up with CSS
+
+Tried to add some CSS to make the pages look nicer (always the most painful part)
 
 == Some Additional Minor Issues I Encountered
 
-* Rails installation
+* Syntax struggles
 
-I had kept using "sudo gem install rails" instead of using "gem install rails" and that caused some problems for my installation.
+There were instances where I spent hours trying to debug what seemed like really simple errors.  In one instance I realized it was because I had genrated a model Jobs, when I should have generated it as Job (singular).  
 
-* RVM installation
+* Paths
 
-I had an error "no available formula for gcc46" during installation.  This was fixed by putting the "-export PATH="/usr/local/bin:/usr..." line in the .profile file.  Initially, I had trouble locating this file and had put the line in a .bash-profile file.
+It is still not clear to me how the paths work.  Sometimes it is reviewers_path, other times it is reviewer_path, and finally it can be @reviewer.  Would appreciate it if someone could explain that to me =P
 
-== Questions
+* Show
 
-* Github / Heroku Syntax
+Not really sure how this function in the controller works and what it does.  The tutorial on the ruby on rails guides website seems to use this function a lot
 
-I'm still unclear what each line of code in the instructions you provided means.  Especially regarding committing and deploying in Heroku.  I'll plan on stopping by office hours to get some clarity.
+
 

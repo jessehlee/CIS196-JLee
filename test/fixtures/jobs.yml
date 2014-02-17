@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: MyString
+  role: MyString
+  startyear: 1
+  endyear: 1
+  reviewer_id: 
+
+two:
+  company: MyString
+  role: MyString
+  startyear: 1
+  endyear: 1
+  reviewer_id: 

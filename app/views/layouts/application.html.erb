@@ -8,7 +8,27 @@
 </head>
 <body>
 
-<%= yield %>
+	<div class="navbar">
+		<ul class="nav">
+			<li class='dropdown'><a class="nav-link" href="#">Reviewers</a>
+				<ul>
+					<li><%= link_to "New Reviewer", new_reviewer_path %></li>
+					<li><%= link_to "All Reviewer", reviewers_path %></li>
+				</ul>
+			</li>
+			<li class='dropdown'><a class="nav-link" href="#">Jobs</a>
+				<ul>
+					<li><%= link_to "New Jobs", new_job_path %></li>
+					<li><%= link_to "All Jobs", jobs_path %></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+	<div class="content">
+		<%= yield %>
+	</div>
 
 </body>
 </html>
+

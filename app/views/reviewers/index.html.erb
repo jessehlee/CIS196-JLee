@@ -1,0 +1,20 @@
+
+
+<h1>REVIEWER INFORMATION</h1>
+
+<table>
+	<tr>
+		<td>NAME</td>
+		<td>LOCATION</td>
+		<th></th>
+	</tr>
+	<% @reviewers.each do |reviewer| %>
+	<tr>
+		<td><%= reviewer.name %></td>
+		<td><%= reviewer.location %></td>
+		<td><%= link_to 'Edit', edit_reviewer_path(reviewer) %></td>
+		<td><%= link_to 'Delete', reviewer_path(reviewer), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+	</tr>
+	<% end %>
+</table>
+

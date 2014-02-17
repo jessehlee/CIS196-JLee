@@ -1,0 +1,33 @@
+<%= form_for(@job) do |f| %>
+
+	<div class="field">
+		<p>company</p>
+		<%= f.text_field :company%>
+	</div>
+
+	<div class="field">
+		<p>role</p>
+		<%= f.text_field :role%>
+	</div>
+
+	<div class="field">
+		<p>start year</p>
+		<%= f.number_field :startyear%>
+	</div>
+
+	<div class="field">
+		<p>end year</p>
+		<%= f.number_field :endyear%>
+	</div>
+
+	<div class="field">
+		<p>reviewer</p>
+		<%= f.collection_select :reviewer_id, Reviewer.all, :id, :name%>
+	</div>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+
+<% end %>
+
