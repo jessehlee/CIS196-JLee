@@ -23,6 +23,16 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
   end
 
+  def update
+    @job = Job.find(params[:id])
+
+    if @job.update(params[:job].permit(:company, :role, :startyear, :endyear, :reviewer_id))
+      redirect_to jobs_path
+    else
+      render 'edit'
+    end
+  end
+
   def show
     @job = Job.find(params[:id])
   end

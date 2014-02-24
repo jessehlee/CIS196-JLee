@@ -26,6 +26,7 @@ class ReviewersController < ApplicationController
 
   def show
     @reviewer = Reviewer.find(params[:id])
+    @jobs = Job.all
   end
 
   def update

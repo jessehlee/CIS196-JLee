@@ -11,12 +11,17 @@
 	</tr>
 	<% @jobs.each do |job| %>
 	<tr>
-		<td><%= job.reviewer.name unless job.reviewer.nil? %></td>
+		<% if job.reviewer != nil %>
+		<td><%= link_to job.reviewer.name, job_path(job) %></td>
 		<td><%= job.company %></td>
 		<td><%= job.role %></td>
 		<td><%= job.startyear %></td>
 		<td><%= job.endyear %></td>
+		<td><%= link_to 'Edit', edit_job_path(job) %></td>
 		<td><%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+		<% end %>
 	</tr>
 	<%end%>
 </table>
+
+

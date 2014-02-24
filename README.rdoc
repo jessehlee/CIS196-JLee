@@ -17,39 +17,21 @@ Jobs
 
 == What I Did and Issues I Had
 
-* Create Controller and Model for Reviewers/Reviewer and Jobs/Job
+* Created "Show" Functionality for "Reviewers" table
 
-Generated Reviewers and Jobs tables through rails generate function in the terminal.  This created the files that I needed to store information into my database, edit them, and display them.
+Implemented a "show", where not only the name/location of each reviewer is displayed, but also all the jobs that are associated with that reviewer.  It was a little bit tricky because I needed to refer to the "jobs" table, but figured it out pretty easily.  The one tricky thing was figuring out where to put the "end" statements.  I noticed depending where I put it in the html, it affecting the formatting of the elements.
 
-* Write Key Table Manipulation Functions in Controller
+* Create "Edit" Functionality for "Jobs" table
 
-Wrote key functions for both Reviewers/Jobs controller such as new, create, edit, destroy, update, index, and show.
+Pretty straightforward.  Added an "edit" and "update" method in the jobs controller.  Then updated the "edit" view page to take in forms and be able to update the information for that specific job entry
 
-* Wrote Html/Ruby Code for Views Related to Each Table
+* Create "Show" Functionality for "Jobs" table
 
-Wrote HTML/Ruby so that the views properly displayed table output and could handle new input, editing, and deleting
-
-* Edited Routes
-
-Ensured that the routes between views was logical
-
-* Cleaned up with CSS
-
-Tried to add some CSS to make the pages look nicer (always the most painful part)
+Created a show functionality that enabled both the company name and role to be in the title.  This involved understanding how to fit ruby code into HTML while in a heading element.  Did some online searching and gradually figured it out.
 
 == Some Additional Minor Issues I Encountered
 
-* Syntax struggles
 
-There were instances where I spent hours trying to debug what seemed like really simple errors.  In one instance I realized it was because I had genrated a model Jobs, when I should have generated it as Job (singular).  
-
-* Paths
-
-It is still not clear to me how the paths work.  Sometimes it is reviewers_path, other times it is reviewer_path, and finally it can be @reviewer.  Would appreciate it if someone could explain that to me =P
-
-* Show
-
-Not really sure how this function in the controller works and what it does.  The tutorial on the ruby on rails guides website seems to use this function a lot
 
 
 

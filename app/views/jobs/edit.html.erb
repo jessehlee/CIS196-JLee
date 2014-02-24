@@ -1,2 +1,35 @@
-<h1>Jobs#edit</h1>
-<p>Find me in app/views/jobs/edit.html.erb</p>
+<%= form_for :job, url: job_path(@job), method: :patch do |f| %>
+
+  <p>
+    <%= f.label :company %><br>
+    <%= f.text_field :company %>
+  </p>
+ 
+  <p>
+    <%= f.label :role %><br>
+    <%= f.text_field :role %>
+  </p>
+
+  <p>
+    <%= f.label :startyear %><br>
+    <%= f.number_field :startyear %>
+  </p>
+
+  <p>
+    <%= f.label :endyear %><br>
+    <%= f.number_field :endyear %>
+  </p>
+
+  <p>
+  	<%= f.label :reviewer_id %><br>
+  	<%= f.collection_select :reviewer_id, Reviewer.all, :id, :name%>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+ 
+<%= link_to 'Back', jobs_path %>
+
+

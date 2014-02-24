@@ -1,0 +1,23 @@
+
+<h2><%= @reviewer.name %></h2>
+<p><%= @reviewer.location %></p>
+
+
+<table>
+	<tr>
+		<td>COMPANY</td>
+		<td>ROLE</td>
+		<td>START YEAR</td>
+		<td>END YEAR</td>
+	</tr>
+	<% @jobs.each do |job| %>
+	<tr>
+		<% if job.reviewer == @reviewer %>
+		<td><%= job.company %></td>
+		<td><%= job.role %></td>
+		<td><%= job.startyear %></td>
+		<td><%= job.endyear %></td>
+		<%end%>
+	</tr>
+	<%end%>
+</table>
