@@ -13,7 +13,7 @@ class ReviewersController < ApplicationController
   end
 
   def reviewer_params
-  	params.require(:reviewer).permit(:name, :location)
+  	params.require(:reviewer).permit(:name, :location, :email)
   end
 
   def index
@@ -32,7 +32,7 @@ class ReviewersController < ApplicationController
   def update
     @reviewer = Reviewer.find(params[:id])
 
-    if @reviewer.update(params[:reviewer].permit(:name, :location))
+    if @reviewer.update(params[:reviewer].permit(:name, :location, :email))
       redirect_to reviewers_path
     else
       render 'edit'

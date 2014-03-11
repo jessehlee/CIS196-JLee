@@ -7,6 +7,7 @@ http://shrouded-mesa-2384.herokuapp.com/
 Reviewers
 	name (string)
 	location (string)
+	assorted devise variables
 
 Jobs
 	company (string)
@@ -17,19 +18,35 @@ Jobs
 
 == What I Did and Issues I Had
 
-* Created "Show" Functionality for "Reviewers" table
+Apologies, I did not have a chance to do HW 6 on time.  This submission includes BOTH HW 6 and HW 7
 
-Implemented a "show", where not only the name/location of each reviewer is displayed, but also all the jobs that are associated with that reviewer.  It was a little bit tricky because I needed to refer to the "jobs" table, but figured it out pretty easily.  The one tricky thing was figuring out where to put the "end" statements.  I noticed depending where I put it in the html, it affecting the formatting of the elements.
+HOMEWORK 6 - ADDING GEMS
 
-* Create "Edit" Functionality for "Jobs" table
+* Added Devise Gem
 
-Pretty straightforward.  Added an "edit" and "update" method in the jobs controller.  Then updated the "edit" view page to take in forms and be able to update the information for that specific job entry
+Had an issue applying Devise to an existing database.  Devise added an email column to my reviewer table and inserted blanks for the email.  Because the email column was supposed to be unique, rails kept giving me errors.  I tried searching for hours but couldn't find a solution.  I ended up needing to delete all the existing reviewers in my database
 
-* Create "Show" Functionality for "Jobs" table
+* Edited Devise Sign-up Page
 
-Created a show functionality that enabled both the company name and role to be in the title.  This involved understanding how to fit ruby code into HTML while in a heading element.  Did some online searching and gradually figured it out.
+When signing up I enabled the new reviewer to also put in their name and their location.  The one issue I had was that when I pressed "update" on my profile edit page, rails would delete the user.  I couldn't figure out why and eventually just commented out the code that related to deleting the user.  Now it works, but there is no ability to delete a reviewer account
 
-== Some Additional Minor Issues I Encountered
+* Updated main page to be a list of all the reviewers and the jobs that are associated with them
+
+The goal of this site is for users to look through a group of reviewers and find the one that is the best match for them based on their professional career.  So I changed the index to refer to my jobs index and listed each reviewer as well as the jobs that applied to them.  I had some issues figuring out how to refer to the reviewers table but eventually figured out that I needed to define some variables in the jobs controller (e.g., @reviewers for the reviewers table)
+
+* Updated site so that if you log in, you can only change the jobs that are associated with you
+
+Reviewers can log in to the site either to update their profile info (e.g., name, email, password, location) or to add/edit their job history.  I edited the site so they can only change their own jobs and not those of other reviewers.  Also when you edited your jobs, you can't switch those jobs to other reviewers.  This was done using "hidden fields".  I also ensured you couldn't manually override this by changing the value of the reviewer id in the HTML path
+
+HOMEWORK 7 - ADDING VALIDATIONS
+
+* Added validations to Job creation
+
+When creating or editing a job it is mandatory to include a company, role, and start year.  I also forced the user to input four digits for the start year and end year fields.
+
+* Added validations to Reviewer creation
+
+When signing up, Devise already does validation on email (presence/uniqueness) and password (presence/length/confirmation).  I added validation to ensure that a name and a location were included using the presence attribute.
 
 
 

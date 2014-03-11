@@ -1,5 +1,6 @@
 AppName::Application.routes.draw do
 
+  devise_for :reviewers
   resources :reviewers
   resources :jobs
   
@@ -10,7 +11,7 @@ AppName::Application.routes.draw do
   # root 'welcome#index'
 
   # You can have the root of your site routed with "root"
-  root 'reviewers#index'
+  root 'jobs#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

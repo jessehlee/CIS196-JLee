@@ -1,3 +1,13 @@
+<div class="error-msg">
+	<% if @job.errors.any? %>
+	<ul>
+		<% @job.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+		<% end %>
+	</ul>
+	<% end %>
+</div>
+
 <%= form_for(@job) do |f| %>
 
 	<div class="field">
@@ -21,8 +31,7 @@
 	</div>
 
 	<div class="field">
-		<p>reviewer</p>
-		<%= f.collection_select :reviewer_id, Reviewer.all, :id, :name%>
+		<%= f.hidden_field :reviewer_id, :value => current_reviewer.id %>
 	</div>
 
 	<div class="actions">

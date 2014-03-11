@@ -8,15 +8,20 @@ class JobsController < ApplicationController
 
   	@job = Job.new(job_params)
 
-  	if @job.save
-  		redirect_to jobs_path
-	  else
-		render 'new'
+    if @job.reviewer_id != current_reviewer.id
+      redirect_to root_path
+    else
+      if @job.save
+        redirect_to jobs_path
+      else
+        render 'new'
+      end
     end
   end
 
   def index
   	@jobs = Job.all
+    @reviewers = Reviewer.all
   end
 
   def edit
@@ -26,10 +31,14 @@ class JobsController < ApplicationController
   def update
     @job = Job.find(params[:id])
 
-    if @job.update(params[:job].permit(:company, :role, :startyear, :endyear, :reviewer_id))
-      redirect_to jobs_path
-    else
+    if @job.reviewer_id != current_reviewer.id
       render 'edit'
+    else
+      if @job.update(params[:job].permit(:company, :role, :startyear, :endyear, :reviewer_id))
+        redirect_to jobs_path
+      else
+        render 'edit'
+      end
     end
   end
 

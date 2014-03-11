@@ -1,3 +1,13 @@
+<div class="error-msg">
+  <% if @job.errors.any? %>
+  <ul>
+    <% @job.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
+
 <%= form_for :job, url: job_path(@job), method: :patch do |f| %>
 
   <p>
@@ -20,9 +30,15 @@
     <%= f.number_field :endyear %>
   </p>
 
+<!--
   <p>
   	<%= f.label :reviewer_id %><br>
   	<%= f.collection_select :reviewer_id, Reviewer.all, :id, :name%>
+  </p>
+-->
+
+  <p>
+    <%= f.hidden_field :reviewer_id, :value => current_reviewer.id %>
   </p>
  
   <p>

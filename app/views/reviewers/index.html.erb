@@ -6,14 +6,18 @@
 	<tr>
 		<td>NAME</td>
 		<td>LOCATION</td>
+		<td>EMAIL</td>
 		<th></th>
 	</tr>
 	<% @reviewers.each do |reviewer| %>
 	<tr>
-		<td><%= link_to reviewer.name, reviewer_path(reviewer) %></td>
+		<% if reviewer != nil %>
+		<td><%= link_to reviewer.name, reviewer_path(reviewer.id) %></td>
 		<td><%= reviewer.location %></td>
+		<td><%= reviewer.email %></td>
 		<td><%= link_to 'Edit', edit_reviewer_path(reviewer) %></td>
 		<td><%= link_to 'Delete', reviewer_path(reviewer), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+		<% end %>
 	</tr>
 	<% end %>
 </table>

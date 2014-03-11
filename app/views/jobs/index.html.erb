@@ -1,5 +1,5 @@
 
-<h1>JOB INFORMATION</h1>
+<h1>REVIEWER DATABASE</h1>
 
 <table>
 	<tr>
@@ -9,19 +9,26 @@
 		<td>START YEAR</td>
 		<td>END YEAR</td>
 	</tr>
-	<% @jobs.each do |job| %>
+	<% @reviewers.each do |currentreviewer| %>
 	<tr>
-		<% if job.reviewer != nil %>
-		<td><%= link_to job.reviewer.name, job_path(job) %></td>
-		<td><%= job.company %></td>
-		<td><%= job.role %></td>
-		<td><%= job.startyear %></td>
-		<td><%= job.endyear %></td>
-		<td><%= link_to 'Edit', edit_job_path(job) %></td>
-		<td><%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+		<td><%= link_to currentreviewer.name, reviewer_path(currentreviewer.id) %></td>
+		<% @jobs.each do |job| %>
+			<tr>
+			<% if job.reviewer != nil && job.reviewer == currentreviewer %>
+			<td></td>
+			<td><%= job.company %></td>
+			<td><%= job.role %></td>
+			<td><%= job.startyear %></td>
+			<td><%= job.endyear %></td>
+				<%if reviewer_signed_in? %>
+					<% if job.reviewer.id == current_reviewer.id %>
+						<td><%= link_to 'Edit', edit_job_path(job) %></td>
+						<td><%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+					<% end %>
+				<% end %>
+			<% end %>
+			</tr>
 		<% end %>
 	</tr>
 	<%end%>
 </table>
-
-
